@@ -1,4 +1,4 @@
-package com.lambdaschool.congressfragmentsproject.fragments
+package com.lambdaschool.congressfragmentsproject.adapter
 
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
@@ -6,31 +6,26 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.lambdaschool.congressfragmentsproject.R
+import com.lambdaschool.congressfragmentsproject.api.CongresspersonOverview
 
 
 import com.lambdaschool.congressfragmentsproject.fragments.CongresspersonOverviewFragment.OnListFragmentInteractionListener
-import com.lambdaschool.congressfragmentsproject.fragments.dummy.DummyContent.DummyItem
 
 import kotlinx.android.synthetic.main.fragment_congresspersonoverview.view.*
 
-/**
- * [RecyclerView.Adapter] that can display a [DummyItem] and makes a call to the
- * specified [OnListFragmentInteractionListener].
- * TODO: Replace the implementation with code for your data type.
- */
 class MyCongresspersonOverviewRecyclerViewAdapter(
-    private val mValues: List<DummyItem>,
-    private val mListener: OnListFragmentInteractionListener?
+    private val congressPersons: List<CongresspersonOverview>,
+    private val clickListener: OnListFragmentInteractionListener?
 ) : RecyclerView.Adapter<MyCongresspersonOverviewRecyclerViewAdapter.ViewHolder>() {
 
     private val mOnClickListener: View.OnClickListener
 
     init {
         mOnClickListener = View.OnClickListener { v ->
-            val item = v.tag as DummyItem
+            val item = v.tag as CongresspersonOverview
             // Notify the active callbacks interface (the activity, if the fragment is attached to
             // one) that an item has been selected.
-            mListener?.onListFragmentInteraction(item)
+            clickListener?.onListFragmentInteraction(item)
         }
     }
 
@@ -41,24 +36,20 @@ class MyCongresspersonOverviewRecyclerViewAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = mValues[position]
-        holder.mIdView.text = item.id
-        holder.mContentView.text = item.content
+        val congressPerson = congressPersons[position]
+        holder.congressTitle.text = congressPerson.title
+        holder.congressPersonsName.text = "${congressPerson.lastName}, ${congressPerson.firstName}"
 
-        with(holder.mView) {
-            tag = item
+        with(holder.view) {
+            tag = congressPerson
             setOnClickListener(mOnClickListener)
         }
     }
 
-    override fun getItemCount(): Int = mValues.size
+    override fun getItemCount(): Int = congressPersons.size
 
-    inner class ViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
-        val mIdView: TextView = mView.item_number
-        val mContentView: TextView = mView.content
-
-        override fun toString(): String {
-            return super.toString() + " '" + mContentView.text + "'"
-        }
+    inner class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
+        val congressTitle: TextView = view.title_view
+        val congressPersonsName: TextView = view.name_view
     }
 }

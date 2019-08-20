@@ -10,9 +10,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.lambdaschool.congressfragmentsproject.R
-
-import com.lambdaschool.congressfragmentsproject.fragments.dummy.DummyContent
-import com.lambdaschool.congressfragmentsproject.fragments.dummy.DummyContent.DummyItem
+import com.lambdaschool.congressfragmentsproject.adapter.MyCongresspersonOverviewRecyclerViewAdapter
+import com.lambdaschool.congressfragmentsproject.api.CongressDao.allMembers
+import com.lambdaschool.congressfragmentsproject.api.CongresspersonOverview
+import kotlinx.android.synthetic.main.fragment_congresspersonoverview_list.*
 
 /**
  * A fragment representing a list of Items.
@@ -47,10 +48,23 @@ class CongresspersonOverviewFragment : Fragment() {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = MyCongresspersonOverviewRecyclerViewAdapter(DummyContent.ITEMS, listener)
+                adapter = MyCongresspersonOverviewRecyclerViewAdapter(
+                    allMembers,
+                    listener
+                )
             }
         }
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        list.setHasFixedSize(true)
+        val layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+        list.layoutManager = layoutManager
+        val personListAdapter = MyCongresspersonOverviewRecyclerViewAdapter(allMembers, listener)
+        list.adapter = personListAdapter
     }
 
     override fun onAttach(context: Context) {
@@ -80,7 +94,7 @@ class CongresspersonOverviewFragment : Fragment() {
      */
     interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        fun onListFragmentInteraction(item: DummyItem?)
+        fun onListFragmentInteraction(item: CongresspersonOverview?)
     }
 
     companion object {

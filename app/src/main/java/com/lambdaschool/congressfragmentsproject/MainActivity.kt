@@ -6,9 +6,17 @@ import android.os.Bundle
 import com.lambdaschool.congressfragmentsproject.api.CongressDao
 import com.lambdaschool.congressfragmentsproject.api.CongresspersonDetails
 import com.lambdaschool.congressfragmentsproject.api.CongresspersonOverview
+import com.lambdaschool.congressfragmentsproject.fragments.CongresspersonOverviewFragment
 import java.util.ArrayList
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), CongresspersonOverviewFragment.OnListFragmentInteractionListener {
+
+    override fun onListFragmentInteraction(item: CongresspersonOverview?) {
+//        item.apiUri
+//        item.title
+//        item.firstName
+//        item.lastName
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
