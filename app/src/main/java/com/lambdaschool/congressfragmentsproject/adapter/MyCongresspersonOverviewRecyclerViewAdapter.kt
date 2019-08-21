@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.fragment_congresspersonoverview.view.*
 
 class MyCongresspersonOverviewRecyclerViewAdapter(
     private val congressPersons: List<CongresspersonOverview>,
-    private val clickListener: OnListFragmentInteractionListener?
+    private val clickListener: OnListFragmentInteractionListener? = null
 ) : RecyclerView.Adapter<MyCongresspersonOverviewRecyclerViewAdapter.ViewHolder>() {
 
     private val mOnClickListener: View.OnClickListener
@@ -26,7 +26,7 @@ class MyCongresspersonOverviewRecyclerViewAdapter(
             val item = v.tag as CongresspersonOverview
             // Notify the active callbacks interface (the activity, if the fragment is attached to
             // one) that an item has been selected.
-            clickListener?.onListFragmentInteraction(item)
+            clickListener?.onFragmentInteraction(item)
         }
     }
 
@@ -46,9 +46,9 @@ class MyCongresspersonOverviewRecyclerViewAdapter(
 //            setOnClickListener(mOnClickListener)
 //        }
         holder.llayout.setOnClickListener {
-            if (clickListener != null){
 
-            }
+            clickListener?.onFragmentInteraction(congressPerson)
+
         }
 
     }

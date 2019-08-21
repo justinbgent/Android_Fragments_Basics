@@ -54,7 +54,7 @@ class DetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val item = arguments?.getSerializable(PERSON_KEY) as CongresspersonOverview?
+        val item = arguments?.getSerializable(PERSON_KEY) as CongresspersonOverview
         person_picture.setImageURI(item?.apiUri?.toUri())
         title_view_detail.text = item?.title
         name_view_detail.text = "${item?.lastName}, ${item?.firstName}"
