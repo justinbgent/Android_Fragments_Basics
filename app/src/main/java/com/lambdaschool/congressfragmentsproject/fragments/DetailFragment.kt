@@ -8,8 +8,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.core.net.toUri
+import com.lambdaschool.congressfragmentsproject.MainActivity.Companion.PERSON_KEY
 
 import com.lambdaschool.congressfragmentsproject.R
+import com.lambdaschool.congressfragmentsproject.api.CongresspersonOverview
+import kotlinx.android.synthetic.main.fragment_detail.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -50,10 +54,12 @@ class DetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        val item = arguments?.getSerializable(ItemDetail.ITEM_KEY) as ShoppingItem? ?: ShoppingItem("Empty", R.drawable.pineapple)
-//        fragment_item_image.setImageDrawable(context?.let { ContextCompat.getDrawable(it, item.drawableId) })
-//        fragment_item_name.text = item.formattedName
+        val item = arguments?.getSerializable(PERSON_KEY) as CongresspersonOverview?
+        person_picture.setImageURI(item?.apiUri?.toUri())
+        title_view_detail.text = item?.title
+        name_view_detail.text = "${item?.lastName}, ${item?.firstName}"
     }
+
 
     // TODO: Rename method, update argument and hook method into UI event
     fun onButtonPressed(uri: Uri) {

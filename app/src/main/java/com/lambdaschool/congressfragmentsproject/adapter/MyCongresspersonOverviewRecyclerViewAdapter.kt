@@ -4,6 +4,7 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
 import com.lambdaschool.congressfragmentsproject.R
 import com.lambdaschool.congressfragmentsproject.api.CongresspersonOverview
@@ -40,10 +41,16 @@ class MyCongresspersonOverviewRecyclerViewAdapter(
         holder.congressTitle.text = congressPerson.title
         holder.congressPersonsName.text = "${congressPerson.lastName}, ${congressPerson.firstName}"
 
-        with(holder.view) {
-            tag = congressPerson
-            setOnClickListener(mOnClickListener)
+//        with(holder.view) {
+//            tag = congressPerson
+//            setOnClickListener(mOnClickListener)
+//        }
+        holder.llayout.setOnClickListener {
+            if (clickListener != null){
+
+            }
         }
+
     }
 
     override fun getItemCount(): Int = congressPersons.size
@@ -51,5 +58,6 @@ class MyCongresspersonOverviewRecyclerViewAdapter(
     inner class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         val congressTitle: TextView = view.title_view
         val congressPersonsName: TextView = view.name_view
+        val llayout: LinearLayout = view.llayout
     }
 }
