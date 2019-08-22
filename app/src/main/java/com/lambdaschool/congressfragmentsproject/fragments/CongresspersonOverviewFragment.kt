@@ -14,11 +14,7 @@ import com.lambdaschool.congressfragmentsproject.api.CongressDao.allMembers
 import com.lambdaschool.congressfragmentsproject.api.CongresspersonOverview
 import kotlinx.android.synthetic.main.fragment_congresspersonoverview_list.*
 
-/**
- * A fragment representing a list of Items.
- * Activities containing this fragment MUST implement the
- * [CongresspersonOverviewFragment.OnListFragmentInteractionListener] interface.
- */
+
 class CongresspersonOverviewFragment : Fragment() {
 
     // TODO: Customize parameters

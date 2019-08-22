@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity(), CongresspersonOverviewFragment.OnListF
 
         if (fragment_secondary == null){
             supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, fragment)
+                .replace(R.id.frame, fragment)
                 .addToBackStack(null)
                 .commit()
         }
@@ -59,16 +59,11 @@ class MainActivity : AppCompatActivity(), CongresspersonOverviewFragment.OnListF
         // get congressperson portrait
         val image: Bitmap? = allMembers[0].id?.let { CongressDao.getImage(it) }
 
-//        val fragment = CongresspersonOverviewFragment as Fragment
+//        val fragment = CongresspersonOverviewFragment
 //
 //        supportFragmentManager.beginTransaction()
-//            .replace(R.id.main_fragment, fragment)
+//            .replace(R.id.frame, fragment)
 //            .commit()
 
-//        list.setHasFixedSize(true)
-//        val layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
-//        list.layoutManager = layoutManager
-//        val personListAdapter = MyCongresspersonOverviewRecyclerViewAdapter(CongressDao.allMembers)
-//        list.adapter = personListAdapter
     }
 }

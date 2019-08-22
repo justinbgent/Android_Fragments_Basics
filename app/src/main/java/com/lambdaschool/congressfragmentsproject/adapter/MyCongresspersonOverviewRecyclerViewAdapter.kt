@@ -19,16 +19,16 @@ class MyCongresspersonOverviewRecyclerViewAdapter(
     private val clickListener: OnListFragmentInteractionListener? = null
 ) : RecyclerView.Adapter<MyCongresspersonOverviewRecyclerViewAdapter.ViewHolder>() {
 
-    private val mOnClickListener: View.OnClickListener
-
-    init {
-        mOnClickListener = View.OnClickListener { v ->
-            val item = v.tag as CongresspersonOverview
-            // Notify the active callbacks interface (the activity, if the fragment is attached to
-            // one) that an item has been selected.
-            clickListener?.onFragmentInteraction(item)
-        }
-    }
+//    private val mOnClickListener: View.OnClickListener
+//
+//    init {
+//        mOnClickListener = View.OnClickListener { v ->
+//            val item = v.tag as CongresspersonOverview
+//            // Notify the active callbacks interface (the activity, if the fragment is attached to
+//            // one) that an item has been selected.
+//            clickListener?.onFragmentInteraction(item)
+//        }
+//    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -56,8 +56,8 @@ class MyCongresspersonOverviewRecyclerViewAdapter(
     override fun getItemCount(): Int = congressPersons.size
 
     inner class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
-        val congressTitle: TextView = view.title_view
-        val congressPersonsName: TextView = view.name_view
-        val llayout: LinearLayout = view.llayout
+        val congressTitle = view.title_view
+        val congressPersonsName = view.name_view
+        val llayout = view.llayout
     }
 }
