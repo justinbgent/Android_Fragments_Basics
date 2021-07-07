@@ -70,7 +70,7 @@ object CongressDao {
         return congressPersonProfile
     }
 
-    fun getImage(id: String): Bitmap? {
+    fun getImage(id: String?): Bitmap? {
         return NetworkAdapter.getBitmapFromURL(IMAGE_URL + id + JPG)
     }
 

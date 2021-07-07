@@ -1,8 +1,9 @@
 package com.lambdaschool.congressfragmentsproject.api
 
 import org.json.JSONObject
+import java.io.Serializable
 
-class CongresspersonOverview {
+class CongresspersonOverview: Serializable {
 
     // SerializedName("id")
     var id: String? = null
